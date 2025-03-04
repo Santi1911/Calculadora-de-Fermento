@@ -9,19 +9,19 @@ function calcularIngredientes() {
     let factor = volumenDeseado / 6.6;
 
     let ingredientes = {
-        "Melaza": 396 * factor,
-        "Harina de Arroz": 264 * factor,
-        "Bacillus subtilis replicado (ml)": 105.6 * factor,
-        "Levadura": 6.6 * factor,
-        "Bacterias ácido-lácticas (ml)": 3.96 * factor,
-        "Oxynova (mg)": 0.000264 * factor,
-        "Tierras de diatomeas": 26.4 * factor,
-        "Bactercol (ml)": 2.64 * factor
+        "Melaza": (396 * factor).toFixed(2) + " g",
+        "Harina de Arroz": (264 * factor).toFixed(2) + " g",
+        "Bacillus subtilis replicado": (105.6 * factor).toFixed(2) + " ml",
+        "Levadura": (6.6 * factor).toFixed(2) + " g",
+        "Bacterias ácido-lácticas": (3.96 * factor).toFixed(2) + " ml",
+        "Oxynova": (0.000264 * factor).toFixed(6) + " g",
+        "Tierras de diatomeas": (26.4 * factor).toFixed(2) + " g",
+        "Bactercol": (2.64 * factor).toFixed(2) + " ml"
     };
 
     let resultadoHTML = "<h3>Ingredientes necesarios:</h3><ul>";
     for (let ingrediente in ingredientes) {
-        resultadoHTML += `<li><b>${ingrediente}:</b> ${ingredientes[ingrediente].toFixed(3)}</li>`;
+        resultadoHTML += `<li><b>${ingrediente}:</b> ${ingredientes[ingrediente]}</li>`;
     }
     resultadoHTML += "</ul>";
 
