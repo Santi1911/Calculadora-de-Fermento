@@ -1,8 +1,9 @@
 function calcularIngredientes() {
-    let volumenDeseado = parseFloat(document.getElementById("volumen").value);
+    let volumenInput = document.getElementById("volumen").value.replace(",", "."); // Reemplaza coma por punto
+    let volumenDeseado = parseFloat(volumenInput);
 
     if (isNaN(volumenDeseado) || volumenDeseado <= 0) {
-        document.getElementById("resultado").innerHTML = "⚠️ Ingresa un volumen válido.";
+        document.getElementById("resultado").innerHTML = "<p class='error'>⚠️ Ingresa un volumen válido.</p>";
         return;
     }
 
@@ -19,11 +20,15 @@ function calcularIngredientes() {
         "Bactercol": (2.64 * factor).toFixed(2) + " ml"
     };
 
-    let resultadoHTML = "<h3>Ingredientes necesarios:</h3><ul>";
+    let resultadoHTML = "<h3>🧪 Ingredientes necesarios:</h3><table>";
     for (let ingrediente in ingredientes) {
-        resultadoHTML += `<li><b>${ingrediente}:</b> ${ingredientes[ingrediente]}</li>`;
+        resultadoHTML += `
+            <tr>
+                <td><b>${ingrediente}:</b></td>
+                <td>${ingredientes[ingrediente]}</td>
+            </tr>`;
     }
-    resultadoHTML += "</ul>";
+    resultadoHTML += "</table>";
 
     document.getElementById("resultado").innerHTML = resultadoHTML;
 }
